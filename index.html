@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan S Nair - Student Database System | BCA Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h2>Aryan S Nair</h2>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#database">Database</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Aryan S Nair</h1>
+            <p>1st Year BCA | Kristu Jayanti College, Bengaluru<br>Java, Python, SQL | Data Analysis Student</p>
+            <a href="#database" class="btn">Try Database</a>
+        </div>
+    </section>
+
+    <section id="skills" class="about">
+        <h2>Technical Skills</h2>
+        <div class="about-content">
+            <p>1st Year BCA Student skilled in programming and data analysis. Kristu Jayanti College.</p>
+            <div class="skills">
+                <h3>Programming Skills</h3>
+                <ul>
+                    <li>Java (Basics)</li>
+                    <li>HTML & CSS</li>
+                    <li>C Programming</li>
+                    <li>Python</li>
+                    <li>SQL</li>
+                    <li>Data Analysis</li>
+                </ul>
+            </div>
+            <div class="skills">
+                <h3>Featured Projects</h3>
+                <ul>
+                    <li>Employee Salary Management System</li>
+                    <li>Online Quiz Application</li>
+                    <li>Student Database System</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="database" class="database-section">
+        <h2>Student Record Management</h2>
+        <p>Total Records: <span id="count">0</span></p>
+        
+        <form id="studentForm" class="form-container">
+            <h3>Add Student Record</h3>
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email ID" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <input type="text" id="course" placeholder="Course (BCA/B.Com/BBA)" required>
+            <input type="number" id="marks" placeholder="Semester Marks (0-100)" max="100" min="0" required>
+            <button type="submit" class="btn">Save Record</button>
+        </form>
+
+        <div id="studentsList" class="students-container">
+            <p>No student records added yet.</p>
+        </div>
+        <button id="clearAll" class="btn btn-danger">Clear Database</button>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Information</h2>
+        <p>Email: <a href="mailto:25bcae36@kristujayanti.com">25bcae36@kristujayanti.com</a><br>
+           Phone: +91-807XXXXXXX<br>
+           College: Kristu Jayanti College, Bengaluru</p>
+    </section>
+
+    <footer>
+        <p>© 2026 Aryan S Nair | BCA 1st Year | Kristu Jayanti College | Student Database Project</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
