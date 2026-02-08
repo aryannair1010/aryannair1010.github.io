@@ -1,59 +1,60 @@
-// ===============================
-// Smooth Scroll Navigation
-// ===============================
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener("click", function(e) {
         e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute('href'));
-
-        if (target) {
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
+        document.querySelector(this.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
     });
 });
 
+const form = document.getElementById("studentForm");
+const list = document.getElementById("studentsList");
+const count = document.getElementById("count");
+const clearBtn = document.getElementById("clearAll");
 
-// ===============================
-// Navbar Scroll Effect
-// ===============================
-const navbar = document.querySelector(".navbar");
+let students = JSON.parse(localStorage.getItem("students")) || [];
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add("nav-scrolled");
-    } else {
-        navbar.classList.remove("nav-scrolled");
+function updateUI() {
+    list.innerHTML = "";
+
+    if (students.length === 0) {
+        list.innerHTML = "<p>No student records added yet.</p>";
     }
-});
 
-
-// ===============================
-// Active Navigation Highlight
-// ===============================
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.clientHeight;
-
-        if (pageYOffset >= sectionTop) {
-            current = section.getAttribute("id");
-        }
+    students.forEach((s) => {
+        const div = document.createElement("div");
+        div.innerHTML =
+            `<strong>${s.name}</strong><br>
+            ${s.email} | ${s.phone}<br>
+            ${s.course} | Marks: ${s.marks}<hr>`;
+        list.appendChild(div);
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-        }
-    });
+    count.textContent = students.length;
+}
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const student = {
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
+        course: course.value,
+        marks: marks.value
+    };
+
+    students.push(student);
+    localStorage.setItem("students", JSON.stringify(students));
+
+    form.reset();
+    updateUI();
 });
+
+clearBtn.addEventListener("click", () => {
+    students = [];
+    localStorage.removeItem("students");
+    updateUI();
+});
+
+updateUI();
